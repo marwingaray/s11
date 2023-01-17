@@ -1,0 +1,28 @@
+<section class="container ">
+    <h1>Formulario de contacto</h1>
+    <section >
+        <form [formGroup]="formContact" (submit)="send()">
+            <section>
+                <p><label for="">Nombres</label></p>
+                <input type="text" name="nombres" formControlName="nombres">
+            </section>
+            <section>
+                <p><label for="">Correo</label></p>
+                <input type="email" name="nombres" formControlName="email">
+            </section>
+            <section>
+                <p><label for="">Mensaje</label></p>
+                <textarea name="mensaje" formControlName="mensaje" id="" cols="30" rows="10"></textarea>
+            </section>
+            <section>
+                <i>{{formContact.valid}}</i>
+            </section>
+            <section>
+                <button class="btn btn-primary" type="submit" [disabled]="formContact.invalid" >Enviar</button>
+            </section>
+            <section>
+                <p *ngIf="formContact.valid">todos los datos son validos</p>
+            </section>
+        </form>
+    </section>
+</section>
