@@ -1,0 +1,41 @@
+<form #formLogin="ngForm">
+    <section class="form-group">
+        <label for="">Usuario</label>
+        <input type="text" name="user" [(ngModel)]="model.user" required #user="ngModel" class="form-control">
+    </section>
+    <section class="form-group">
+        <label for="">Contraseña</label>
+        <input type="password" name="password" [(ngModel)]="model.password" required minlength="4" #password="ngModel" class="form-control">
+    </section>
+    <section class="form-group">
+        <label for="">Pais</label>
+        <select name="" id="" class="form-control">
+            <option *ngFor="let pais of paises" value="pais.value">{{pais.text}}</option>
+        </select>
+    </section>
+    <section class="form-group">
+        <label for="offs">Deseas recibir ofertas?</label>
+        <input type="checkbox" name="offs" [(ngModel)]="model.offs" #offs required id="offs" >
+    </section>
+    <section class="form-group">
+        <button (click)="cancelar()" class="btn">Cancelar</button>
+        <button type="submit" class="btn btn-success" (click)="enviar()" [disabled]="!formLogin.form.valid">Enviar</button>
+    </section>
+</form>
+
+
+<!-- Validaciones -->
+<section *ngIf="user.invalid && (user.dirty || user.touched)" class="alert alert-danger">
+    <section *ngIf="user.errors?.['required']">
+    El usuario es requerido
+    </section>
+</section>
+
+<section *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+<section *ngIf="password.errors?.['required']">
+El password es requerido
+</section>
+<section *ngIf="password.errors?.['minlength']">
+El password debe tener al menos 4 caracteres
+</section>
+</section>
